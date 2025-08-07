@@ -31,8 +31,8 @@ git add .
 # Commit การเปลี่ยนแปลง
 git commit -m "Initial commit: Add security labs portfolio"
 
-# เชื่อมต่อกับ GitHub repository (แทนที่ [username] ด้วยชื่อผู้ใช้ของคุณ)
-git remote add origin https://github.com/[username]/engse214-66543210005.git
+# เชื่อมต่อกับ GitHub repository (แทนที่ JakkrapartXD ด้วยชื่อผู้ใช้ของคุณ)
+git remote add origin https://github.com/JakkrapartXD/engse214-66543210005.git
 
 # Push ขึ้น GitHub
 git push -u origin main
@@ -43,7 +43,7 @@ git push -u origin main
 #### วิธีที่ 1: ผ่าน GitHub Web Interface
 
 1. **ไปที่ Repository**
-   - เข้า https://github.com/[username]/engse214-66543210005
+   - เข้า https://github.com/JakkrapartXD/engse214-66543210005
 
 2. **เข้าสู่ Settings**
    - คลิกแท็บ "Settings" ด้านบนของ repository
@@ -60,7 +60,7 @@ git push -u origin main
 
 5. **รอการ Deploy**
    - GitHub จะใช้เวลา 5-10 นาทีในการ deploy
-   - URL จะแสดงเป็น: `https://[username].github.io/engse214-66543210005/`
+   - URL จะแสดงเป็น: `https://JakkrapartXD.github.io/engse214-66543210005/`
 
 #### วิธีที่ 2: ผ่าน GitHub Actions (Advanced)
 
@@ -112,13 +112,13 @@ jobs:
 
 ```
 📋 หน้าหลัก
-https://[username].github.io/engse214-66543210005/
+https://JakkrapartXD.github.io/engse214-66543210005/
 
 🚀 Lab 1: XSS Challenge
-https://[username].github.io/engse214-66543210005/Lab%201:%20Cross-Site%20Scripting%20(XSS)%20Challenge/
+https://JakkrapartXD.github.io/engse214-66543210005/Lab%201:%20Cross-Site%20Scripting%20(XSS)%20Challenge/
 
 🔒 Lab 2: Secure User Profile
-https://[username].github.io/engse214-66543210005/Lab%202:%20Secure%20User%20Profile%20Project/
+https://JakkrapartXD.github.io/engse214-66543210005/Lab%202:%20Secure%20User%20Profile%20Project/
 ```
 
 ### หมายเหตุเรื่อง URL Encoding:
@@ -277,7 +277,7 @@ GitHub Pages ใช้ HTTPS โดยอัตโนมัติ ✅
 
 **🎯 เมื่อทำตามขั้นตอนเหล่านี้เสร็จ คุณจะได้:**
 
-✅ หน้า Portfolio หลักที่ `https://[username].github.io/engse214-66543210005/`  
+✅ หน้า Portfolio หลักที่ `https://JakkrapartXD.github.io/engse214-66543210005/`  
 ✅ Lab 1 XSS Challenge ที่สามารถเข้าถึงได้  
 ✅ Lab 2 Placeholder ที่พร้อมสำหรับพัฒนาต่อ  
 ✅ ระบบ Auto-deploy เมื่อมีการ push code ใหม่  
