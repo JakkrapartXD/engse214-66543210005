@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENGSE214 - Security Labs Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .labs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .lab-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .lab-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+        }
+        
+        .lab-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .lab-number {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .lab-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .lab-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .lab-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .lab-features li {
+            padding: 5px 0;
+            color: #555;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .lab-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+        
+        .lab-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .lab-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .lab-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .status-ready {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-development {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            margin-top: 50px;
+        }
+        
+        .github-info {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            color: white;
+        }
+        
+        .github-info h3 {
+            margin-bottom: 15px;
+        }
+        
+        .github-info code {
+            background: rgba(0,0,0,0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ ENGSE214</h1>
+            <p>Security Engineering Labs Portfolio</p>
+            <p>รหัสนักศึกษา: 66543210005</p>
+        </div>
+        
+        <div class="labs-grid">
+            <!-- Lab 1: XSS Challenge -->
+            <div class="lab-card">
+                <div class="lab-status status-ready">พร้อมใช้งาน</div>
+                <div class="lab-number">LAB 1</div>
+                <h2 class="lab-title">Cross-Site Scripting (XSS) Challenge</h2>
+                <p class="lab-description">
+                    เว็บสื่อการสอนเรื่อง Cross-Site Scripting พร้อมโหมดปลอดภัย/ไม่ปลอดภัย 
+                    เพื่อเรียนรู้วิธีการป้องกันและแสดงช่องโหว่ XSS
+                </p>
+                <ul class="lab-features">
+                    <li>โหมดสลับปลอดภัย/ไม่ปลอดภัย</li>
+                    <li>ตัวอย่าง XSS Payloads</li>
+                    <li>ฟังก์ชันป้องกัน XSS</li>
+                    <li>UI การสอนที่เข้าใจง่าย</li>
+                </ul>
+                <a href="Lab 1: Cross-Site Scripting (XSS) Challenge/" class="lab-button">
+                    🚀 เข้าสู่ Lab 1
+                </a>
+            </div>
+            
+            <!-- Lab 2: Secure User Profile -->
+            <div class="lab-card">
+                <div class="lab-status status-development">กำลังพัฒนา</div>
+                <div class="lab-number">LAB 2</div>
+                <h2 class="lab-title">Secure User Profile Project</h2>
+                <p class="lab-description">
+                    โปรเจ็กต์สร้างระบบโปรไฟล์ผู้ใช้ที่ปลอดภัย พร้อมการจัดการ Authentication, 
+                    Authorization และการป้องกันช่องโหว่ความปลอดภัยต่างๆ
+                </p>
+                <ul class="lab-features">
+                    <li>ระบบ Authentication ที่ปลอดภัย</li>
+                    <li>การจัดการ Session</li>
+                    <li>Input Validation</li>
+                    <li>CSRF Protection</li>
+                </ul>
+                <a href="Lab 2: Secure User Profile Project/" class="lab-button">
+                    🔒 เข้าสู่ Lab 2
+                </a>
+            </div>
+        </div>
+        
+        <div class="github-info">
+            <h3>📋 GitHub Pages Setup</h3>
+            <p><strong>Repository URL:</strong> <code>https://github.com/[username]/engse214-66543210005</code></p>
+            <p><strong>GitHub Pages URL:</strong> <code>https://[username].github.io/engse214-66543210005/</code></p>
+            <br>
+            <p><strong>Lab URLs:</strong></p>
+            <p>• Lab 1: <code>https://[username].github.io/engse214-66543210005/Lab%201:%20Cross-Site%20Scripting%20(XSS)%20Challenge/</code></p>
+            <p>• Lab 2: <code>https://[username].github.io/engse214-66543210005/Lab%202:%20Secure%20User%20Profile%20Project/</code></p>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 ENGSE214 Security Engineering Labs</p>
+            <p>Created for educational purposes</p>
+        </div>
+    </div>
+</body>
+</html>

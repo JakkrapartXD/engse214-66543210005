@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2: Secure User Profile Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+        }
+        
+        .icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .lab-number {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+        
+        .status {
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            border: 2px solid #ffeaa7;
+        }
+        
+        .description {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+        
+        .features {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        
+        .features h3 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+        
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .features li {
+            padding: 10px 0;
+            color: #555;
+            position: relative;
+            padding-left: 30px;
+            font-size: 1rem;
+        }
+        
+        .features li::before {
+            content: '🔒';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+            box-shadow: 0 4px 15px rgba(108, 117, 125, 0.4);
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            background: #5a6268;
+        }
+        
+        .progress {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 8px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+            height: 100%;
+            width: 25%;
+            border-radius: 10px;
+            animation: progress-animation 3s ease-in-out infinite;
+        }
+        
+        @keyframes progress-animation {
+            0% { width: 25%; }
+            50% { width: 35%; }
+            100% { width: 25%; }
+        }
+        
+        .footer {
+            margin-top: 30px;
+            color: #999;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🚧</div>
+        <div class="lab-number">LAB 2</div>
+        <h1>Secure User Profile Project</h1>
+        
+        <div class="status">
+            🔄 กำลังอยู่ในระหว่างการพัฒนา
+        </div>
+        
+        <p class="description">
+            Lab นี้จะเป็นการสร้างระบบโปรไฟล์ผู้ใช้ที่มีความปลอดภัยสูง 
+            โดยเน้นการป้องกันช่องโหว่ด้านความปลอดภัยต่างๆ ที่พบได้บ่อยในระบบ Web Application
+        </p>
+        
+        <div class="features">
+            <h3>🎯 ฟีเจอร์ที่จะมีใน Lab นี้</h3>
+            <ul>
+                <li>ระบบ Authentication และ Authorization ที่ปลอดภัย</li>
+                <li>การจัดการ Session และ Cookies อย่างถูกต้อง</li>
+                <li>Input Validation และ Sanitization</li>
+                <li>การป้องกัน CSRF (Cross-Site Request Forgery)</li>
+                <li>Password Hashing และ Security Best Practices</li>
+                <li>SQL Injection Prevention</li>
+            </ul>
+        </div>
+        
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+        <p style="color: #666; margin-bottom: 30px;">ความคืบหน้า: 25% - กำลังวางแผนและออกแบบ</p>
+        
+        <div class="buttons">
+            <a href="../" class="btn btn-primary">🏠 กลับหน้าหลัก</a>
+            <a href="https://github.com" class="btn btn-secondary" target="_blank">📋 ดู Repository</a>
+        </div>
+        
+        <div class="footer">
+            <p>Lab 2 จะเปิดใช้งานเร็วๆ นี้ โปรดติดตามการอัพเดทใน Repository</p>
+            <p>© 2024 ENGSE214 Security Engineering</p>
+        </div>
+    </div>
+    
+    <script>
+        // แสดงข้อความเมื่อโหลดหน้า
+        window.addEventListener('load', function() {
+            console.log('🚧 Lab 2: Secure User Profile Project');
+            console.log('📅 สถานะ: กำลังพัฒนา');
+            console.log('🎯 เป้าหมาย: สร้างระบบโปรไฟล์ผู้ใช้ที่ปลอดภัย');
+            console.log('📊 ความคืบหน้า: 25%');
+        });
+        
+        // เพิ่ม interaction เล็กน้อย
+        document.querySelector('.icon').addEventListener('click', function() {
+            this.style.transform = 'rotate(360deg)';
+            setTimeout(() => {
+                this.style.transform = 'rotate(0deg)';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
