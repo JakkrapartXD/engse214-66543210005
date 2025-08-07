@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เว็บสื่อการสอน Cross-Site Scripting (XSS)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .mode-selector {
+            background-color: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .mode-status {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .mode-safe {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .mode-unsafe {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .mode-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-safe {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .btn-safe:hover {
+            background-color: #218838;
+        }
+        
+        .btn-unsafe {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .btn-unsafe:hover {
+            background-color: #c82333;
+        }
+        
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #856404;
+        }
+        
+        .warning-box strong {
+            color: #dc3545;
+        }
+        
+        .form-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #dee2e6;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        
+        #comments-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            min-height: 200px;
+        }
+        
+        .comment {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .comment strong {
+            color: #007bff;
+        }
+        
+        .example-payloads {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .payload-item {
+            background-color: #e9ecef;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ เว็บสื่อการสอน Cross-Site Scripting (XSS)</h1>
+        
+        <div class="mode-selector">
+            <div id="mode-status" class="mode-status mode-safe">
+                🟢 โหมดปลอดภัย - ป้องกัน XSS
+            </div>
+            <div class="mode-buttons">
+                <button id="safe-mode-btn" class="btn btn-safe">โหมดปลอดภัย</button>
+                <button id="unsafe-mode-btn" class="btn btn-unsafe">โหมดไม่ปลอดภัย</button>
+            </div>
+            <div class="warning-box">
+                <strong>⚠️ คำเตือน:</strong> โหมดไม่ปลอดภัยจะแสดงช่องโหว่ XSS จริง ใช้เพื่อการศึกษาเท่านั้น!
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>💬 โพสต์ความคิดเห็น</h2>
+            <form id="comment-form">
+                <div class="form-group">
+                    <label for="name-input">ชื่อผู้ใช้:</label>
+                    <input type="text" id="name-input" placeholder="ใส่ชื่อของคุณ" required>
+                </div>
+                <div class="form-group">
+                    <label for="comment-input">ความคิดเห็น:</label>
+                    <textarea id="comment-input" placeholder="แสดงความคิดเห็นของคุณ" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">📝 โพสต์ความคิดเห็น</button>
+            </form>
+        </div>
+
+        <div>
+            <h2>💭 ความคิดเห็นทั้งหมด</h2>
+            <div id="comments-container"></div>
+        </div>
+
+        <div class="example-payloads">
+            <h3>🔍 ตัวอย่าง XSS Payloads สำหรับทดสอบ</h3>
+            <p>ลองคัดลอกและวางใน input ในโหมดไม่ปลอดภัย:</p>
+            <div class="payload-item">&lt;script&gt;alert('XSS Attack!')&lt;/script&gt;</div>
+            <div class="payload-item">&lt;img src="x" onerror="alert('XSS via img tag')"&gt;</div>
+            <div class="payload-item">&lt;svg onload="alert('XSS via SVG')"&gt;&lt;/svg&gt;</div>
+            <div class="payload-item">&lt;iframe src="javascript:alert('XSS via iframe')"&gt;&lt;/iframe&gt;</div>
+            <div class="payload-item">&lt;body onload="alert('XSS via body onload')"&gt;</div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
