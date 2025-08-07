@@ -5,11 +5,9 @@
 ## 📋 รายการ Labs
 
 **URL Structure**
-   ```
-   หน้าหลัก: https://JakkrapartXD.github.io/engse214-66543210005/
-   Lab 1: https://JakkrapartXD.github.io/engse214-66543210005/Lab%201:%20Cross-Site%20Scripting%20(XSS)%20Challenge/
-   Lab 2: https://JakkrapartXD.github.io/engse214-66543210005/Lab%202:%20Secure%20User%20Profile%20Project/
-   ```
+หน้าหลัก: https://JakkrapartXD.github.io/engse214-66543210005/ <br> 
+Lab 1: https://JakkrapartXD.github.io/engse214-66543210005/Lab%201:%20Cross-Site%20Scripting%20(XSS)%20Challenge/ <br> 
+Lab 2: https://JakkrapartXD.github.io/engse214-66543210005/Lab%202:%20Secure%20User%20Profile%20Project/ <br> 
 
 ## 📞 ติดต่อ
 
